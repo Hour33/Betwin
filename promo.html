@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promotion | Betwin</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b3d2e;
+  color:#fff;
+}
+
+/* ===== HEADER ===== */
+.header{
+  background:#083025;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-weight:bold;
+  font-size:18px;
+  color:#f6d34b;
+}
+.header-actions{
+  display:flex;
+  gap:10px;
+}
+.btn{
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:13px;
+}
+.btn.register{
+  background:linear-gradient(90deg,#f6d34b,#f2b705);
+  color:#000;
+}
+.btn.login{
+  border:1px solid #2c6e4f;
+}
+
+/* ===== TITLE ===== */
+.title{
+  padding:15px;
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* ===== PROMO CARDS ===== */
+.promo{
+  padding:0 15px 120px;
+}
+.card{
+  background:#1f4f3a;
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:16px;
+}
+.card img{
+  width:100%;
+  display:block;
+}
+
+/* ===== BOTTOM NAV ===== */
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#083025;
+  padding:10px 0;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+.nav-item{
+  text-align:center;
+  font-size:12px;
+  color:#cfcfcf;
+}
+.nav-item.active{
+  color:#f6d34b;
+}
+.center-btn{
+  background:#f6d34b;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#000;
+  font-weight:bold;
+  margin-top:-30px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="logo">BETWIN</div>
+  <div class="header-actions">
+    <div class="btn register">Register</div>
+    <div class="btn login">Login</div>
+  </div>
+</div>
+
+<!-- ===== PAGE TITLE ===== -->
+<div class="title">Promotion</div>
+
+<!-- ===== PROMO CONTENT (SCROLLABLE) ===== -->
+<div class="promo">
+
+  <!-- Deposit Bonus -->
+  <div class="card">
+    <img src="https://picsum.photos/800/360?random=1" alt="Deposit Bonus">
+  </div>
+
+  <!-- Daily Cashback -->
+  <div class="card">
+    <img src="https://picsum.photos/800/360?random=2" alt="Daily Cashback">
+  </div>
+
+  <!-- VIP Club -->
+  <div class="card">
+    <img src="https://picsum.photos/800/360?random=3" alt="VIP Club">
+  </div>
+
+  <!-- Gift Cards -->
+  <div class="card">
+    <img src="https://picsum.photos/800/360?random=4" alt="Gift Cards">
+  </div>
+
+  <!-- Lucky Draw -->
+  <div class="card">
+    <img src="https://picsum.photos/800/360?random=5" alt="Lucky Draw">
+  </div>
+
+  <!-- Refer Friends -->
+  <div class="card">
+    <img src="https://picsum.photos/800/360?random=6" alt="Refer Friends">
+  </div>
+
+</div>
+
+<!-- ===== BOTTOM NAV ===== -->
+<div class="bottom">
+  <div class="nav-item">Menu</div>
+  <div class="nav-item">Home</div>
+
+  <div class="center-btn">👤</div>
+
+  <div class="nav-item active">Promo</div>
+  <div class="nav-item">Member</div>
+</div>
+
+</body>
+</html>
