@@ -81,6 +81,14 @@ button{
   font-size:16px;
   cursor:pointer;
 }
+
+#message{
+  margin-top:12px;
+  text-align:center;
+  font-size:14px;
+  color:#4caf50; /* green for success */
+  display:none;
+}
 </style>
 </head>
 
@@ -113,6 +121,8 @@ button{
 
   <button onclick="registerUser()">Register</button>
 
+  <div id="message"></div>
+
 </div>
 
 <script>
@@ -123,17 +133,27 @@ async function registerUser() {
   const password = document.getElementById('password').value;
   const confirmPassword = document.getElementById('confirmPassword').value;
   const ageCheck = document.getElementById('ageCheck').checked;
+  const messageDiv = document.getElementById('message');
+
+  messageDiv.style.display = 'none';
+  messageDiv.textContent = '';
 
   if (!username || !mobile || !password || !confirmPassword) {
-    alert('Please fill all fields');
+    messageDiv.style.color = 'red';
+    messageDiv.textContent = 'Please fill all fields';
+    messageDiv.style.display = 'block';
     return;
   }
   if (password !== confirmPassword) {
-    alert('Passwords do not match');
+    messageDiv.style.color = 'red';
+    messageDiv.textContent = 'Passwords do not match';
+    messageDiv.style.display = 'block';
     return;
   }
   if (!ageCheck) {
-    alert('You must confirm you are over 18 years old');
+    messageDiv.style.color = 'red';
+    messageDiv.textContent = 'You must confirm you are over 18 years old';
+    messageDiv.style.display = 'block';
     return;
   }
 
@@ -155,17 +175,26 @@ async function registerUser() {
     });
 
     if (response.ok) {
-      alert('Registration successful!');
-      window.location = 'login.html';
+      messageDiv.style.color = '#4caf50';
+      messageDiv.textContent = 'Registration successful! Redirecting to login...';
+      messageDiv.style.display = 'block';
+
+      setTimeout(() => {
+        window.location = 'login.html';
+      }, 1500); // 1.5 seconds delay
     } else {
-      alert('Registration failed. Try again.');
+      messageDiv.style.color = 'red';
+      messageDiv.textContent = 'Registration failed. Try again.';
+      messageDiv.style.display = 'block';
     }
   } catch (error) {
     console.error(error);
-    alert('An error occurred. Please try again.');
+    messageDiv.style.color = 'red';
+    messageDiv.textContent = 'An error occurred. Please try again.';
+    messageDiv.style.display = 'block';
   }
 }
 </script>
 
 </body>
-    </html>
+</html>
