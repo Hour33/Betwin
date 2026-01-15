@@ -1,3 +1,116 @@
-html
-echo me 
-body
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | Betwin</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b3d2e;
+  color:#fff;
+}
+.container{
+  padding:20px;
+}
+.tabs{
+  display:flex;
+  border-radius:30px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+.tabs div{
+  flex:1;
+  padding:14px;
+  text-align:center;
+  font-weight:bold;
+}
+.tabs .active{
+  background:linear-gradient(90deg,#f6d34b,#f2b705);
+  color:#000;
+}
+.tabs .inactive{
+  background:#083025;
+}
+
+h2{
+  text-align:center;
+  margin:10px 0 30px;
+}
+
+input{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:30px;
+  margin-bottom:15px;
+  background:#1f4f3a;
+  color:#fff;
+  font-size:14px;
+}
+
+.phone{
+  display:flex;
+  gap:10px;
+}
+.phone select{
+  background:#1f4f3a;
+  border:none;
+  border-radius:30px;
+  padding:16px;
+  color:#fff;
+}
+
+.checkbox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:15px 0;
+}
+
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:30px;
+  background:#2c6e4f;
+  color:#aaa;
+  font-size:16px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="tabs">
+    <div class="active">Register</div>
+    <div class="inactive">Login</div>
+  </div>
+
+  <h2>Welcome to<br><strong>BETWIN</strong></h2>
+
+  <input placeholder="Username">
+  
+  <div class="phone">
+    <select>
+      <option>+234</option>
+    </select>
+    <input placeholder="Mobile">
+  </div>
+
+  <input type="password" placeholder="Password">
+  <input type="password" placeholder="Confirm password">
+
+  <div class="checkbox">
+    <input type="checkbox">
+    <span>Already over 18 years old</span>
+  </div>
+
+  <button>Register</button>
+
+</div>
+</body>
+</html>
