@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu | Betwin</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b3d2e;
+  color:#fff;
+}
+.menu{
+  padding:15px;
+}
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:20px;
+  margin-bottom:20px;
+}
+.item{
+  background:#1f4f3a;
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.item.active{
+  background:linear-gradient(90deg,#f6d34b,#f2b705);
+  color:#000;
+}
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#083025;
+  display:flex;
+  justify-content:space-around;
+  padding:12px 0;
+}
+.bottom div{
+  text-align:center;
+  font-size:12px;
+  color:#f6d34b;
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+
+  <div class="header">
+    <strong>BETWIN</strong>
+    ✕
+  </div>
+
+  <div class="item active">🏠 Home</div>
+  <div class="item">🚀 Popular Game</div>
+  <div class="item">🎰 Slot</div>
+
+  <div class="item">🎁 Promo</div>
+  <div class="item">👑 Levels</div>
+  <div class="item">✔️ Sign In</div>
+
+  <div class="item">✉️ Invite and Benefit</div>
+  <div class="item">⚙️ Setting</div>
+  <div class="item">🎧 Online Service</div>
+
+</div>
+
+<div class="bottom">
+  <div>Menu</div>
+  <div>Home</div>
+  <div>Login</div>
+  <div>Promo</div>
+  <div>Member</div>
+</div>
+
+</body>
+</html>
