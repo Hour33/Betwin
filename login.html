@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Betwin</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b3d2e;
+  color:#fff;
+}
+.container{
+  padding:20px;
+}
+.tabs{
+  display:flex;
+  border-radius:30px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+.tabs div{
+  flex:1;
+  padding:14px;
+  text-align:center;
+  font-weight:bold;
+}
+.tabs .active{
+  background:linear-gradient(90deg,#f6d34b,#f2b705);
+  color:#000;
+}
+.tabs .inactive{
+  background:#083025;
+}
+
+h2{
+  text-align:center;
+  margin:10px 0 30px;
+}
+
+input{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:30px;
+  margin-bottom:15px;
+  background:#1f4f3a;
+  color:#fff;
+}
+
+.checkbox{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:15px 0;
+}
+
+button{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:30px;
+  background:#2c6e4f;
+  color:#aaa;
+  font-size:16px;
+}
+
+.quick{
+  text-align:center;
+  margin-top:25px;
+}
+.google{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:#fff;
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:15px auto;
+  font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="tabs">
+    <div class="inactive">Register</div>
+    <div class="active">Login</div>
+  </div>
+
+  <h2>Welcome to<br><strong>BETWIN</strong></h2>
+
+  <input placeholder="Username">
+  <input type="password" placeholder="Password">
+
+  <div class="checkbox">
+    <input type="checkbox">
+    <span>Remember</span>
+  </div>
+
+  <button>Login</button>
+
+  <div class="quick">
+    <p>Quick login</p>
+    <div class="google">G</div>
+  </div>
+
+</div>
+</body>
+</html>
