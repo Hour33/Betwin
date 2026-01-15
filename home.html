@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LuckHaven Casino</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#2f5b43;
+  color:#fff;
+  padding-bottom:90px;
+}
+
+/* HEADER */
+.header{
+  background:#0b3d2e;
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-weight:bold;
+  font-size:18px;
+  color:#f6d34b;
+}
+.header-actions button{
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  font-weight:bold;
+  margin-left:8px;
+}
+.register{background:#f6d34b}
+.login{background:#1f5f46;color:#fff}
+
+/* BANNER */
+.banner{
+  margin:14px;
+  border-radius:16px;
+  overflow:hidden;
+}
+.banner img{
+  width:100%;
+  display:block;
+}
+
+/* GAME SECTION */
+.section{
+  padding:0 14px;
+  margin-top:20px;
+}
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+.section-title h3{
+  margin:0;
+  font-size:15px;
+}
+.section-title span{
+  font-size:13px;
+  opacity:.8;
+}
+
+/* GAME GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.game{
+  background:#1f3f30;
+  border-radius:14px;
+  overflow:hidden;
+}
+.game img{
+  width:100%;
+  display:block;
+}
+.game p{
+  margin:6px;
+  font-size:12px;
+  text-align:center;
+}
+
+/* PROMO CARDS */
+.promo{
+  margin:14px;
+  border-radius:16px;
+  overflow:hidden;
+}
+.promo img{
+  width:100%;
+  display:block;
+}
+
+/* BOTTOM NAV */
+.nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#0b3d2e;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+}
+.nav div{
+  font-size:12px;
+  text-align:center;
+  color:#bbb;
+}
+.nav .active{
+  color:#f6d34b;
+  font-weight:bold;
+}
+.nav .center{
+  background:#f6d34b;
+  color:#000;
+  padding:10px;
+  border-radius:50%;
+  margin-top:-25px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">Luckhaven-BET</div>
+  <div class="header-actions">
+    <button class="register">Register</button>
+    <button class="login">Login</button>
+  </div>
+</div>
+
+<!-- TOP BANNER -->
+<div class="banner">
+  <img src="https://i.postimg.cc/1XyYk0sM/casino-banner.jpg">
+</div>
+
+<!-- FEATURED GAMES -->
+<div class="section">
+  <div class="section-title">
+    <h3>Popular Game</h3>
+  </div>
+  <div class="grid">
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Fortune Ox</p></div>
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Fortune Ox</p></div>
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Fortune Ox</p></div>
+  </div>
+</div>
+
+<!-- PROMOTIONS -->
+<div class="promo">
+  <img src="https://i.postimg.cc/fbK4s7yP/deposit-bonus.jpg">
+</div>
+
+<div class="promo">
+  <img src="https://i.postimg.cc/V6qJ9n7X/cashback.jpg">
+</div>
+
+<!-- PG GAMES -->
+<div class="section">
+  <div class="section-title">
+    <h3>PG Games</h3>
+    <span>See All ›</span>
+  </div>
+  <div class="grid">
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Fortune Mouse</p></div>
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Shark</p></div>
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Football</p></div>
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Mafia</p></div>
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Asgardian</p></div>
+    <div class="game"><img src="https://i.postimg.cc/W1XG2n7R/game1.png"><p>Legend</p></div>
+  </div>
+</div>
+
+<!-- PP GAMES -->
+<div class="section">
+  <div class="section-title">
+    <h3>PP Games</h3>
+    <span>See All ›</span>
+  </div>
+  <div class="grid">
+    <div class="game"><img src="https://i.postimg.cc/xjYp2C5J/pp1.png"><p>Starlight</p></div>
+    <div class="game"><img src="https://i.postimg.cc/xjYp2C5J/pp1.png"><p>Sugar</p></div>
+    <div class="game"><img src="https://i.postimg.cc/xjYp2C5J/pp1.png"><p>Olympus</p></div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="nav">
+  <div>☰<br>Menu</div>
+  <div class="active">🏠<br>Home</div>
+  <div class="center">👤</div>
+  <div>🎁<br>Promo</div>
+  <div>👥<br>Member</div>
+</div>
+
+</body>
+</html>
