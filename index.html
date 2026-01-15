@@ -112,10 +112,11 @@ body{
   justify-content:space-around;
   padding:10px 0;
 }
-.nav div{
+.nav div, .nav a{
   font-size:12px;
   text-align:center;
   color:#bbb;
+  text-decoration:none;
 }
 .nav .active{
   color:#f6d34b;
@@ -137,8 +138,8 @@ body{
 <div class="header">
   <div class="logo">Luckhaven-BET</div>
   <div class="header-actions">
-    <button class="register">Register</button>
-    <button class="login">Login</button>
+    <a href="register.html"><button class="register">Register</button></a>
+    <a href="login.html"><button class="login">Login</button></a>
   </div>
 </div>
 
@@ -199,11 +200,11 @@ body{
 
 <!-- BOTTOM NAV -->
 <div class="nav">
-  <div>☰<br>Menu</div>
-  <div class="active">🏠<br>Home</div>
-  <div class="center">👤</div>
-  <div>🎁<br>Promo</div>
-  <div>👥<br>Member</div>
+  <a href="menu.html">☰<br>Menu</a>
+  <a class="active" href="index.html">🏠<br>Home</a>
+  <a class="center" href="member.html">👤</a>
+  <a href="promo.html">🎁<br>Promo</a>
+  <a href="member.html">👥<br>Member</a>
 </div>
 
 </body>
