@@ -21,6 +21,7 @@ body{
   align-items:center;
   font-size:20px;
   margin-bottom:20px;
+  cursor:pointer;
 }
 .item{
   background:#1f4f3a;
@@ -45,10 +46,11 @@ body{
   justify-content:space-around;
   padding:12px 0;
 }
-.bottom div{
+.bottom a{
   text-align:center;
   font-size:12px;
   color:#f6d34b;
+  text-decoration:none;
 }
 </style>
 </head>
@@ -59,14 +61,14 @@ body{
 
   <div class="header">
     <strong>BETWIN</strong>
-    ✕
+    <a href="index.html" style="color:#fff;font-size:22px;text-decoration:none;">✕</a>
   </div>
 
-  <div class="item active">🏠 Home</div>
+  <a href="index.html" class="item active">🏠 Home</a>
   <div class="item">🚀 Popular Game</div>
   <div class="item">🎰 Slot</div>
 
-  <div class="item">🎁 Promo</div>
+  <a href="promo.html" class="item">🎁 Promo</a>
   <div class="item">👑 Levels</div>
   <div class="item">✔️ Sign In</div>
 
@@ -77,11 +79,11 @@ body{
 </div>
 
 <div class="bottom">
-  <div>Menu</div>
-  <div>Home</div>
-  <div>Login</div>
-  <div>Promo</div>
-  <div>Member</div>
+  <a href="menu.html">Menu</a>
+  <a href="index.html">Home</a>
+  <a href="login.html">Login</a>
+  <a href="promo.html">Promo</a>
+  <a href="member.html">Member</a>
 </div>
 
 </body>
