@@ -15,43 +15,32 @@ body{
 .container{
   padding:20px;
 }
-
-/* ===== HEADER ===== */
-.header{
-  background:#083025;
+.tabs{
+  display:flex;
+  border-radius:30px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+.tabs div{
+  flex:1;
   padding:14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.logo{
+  text-align:center;
   font-weight:bold;
-  font-size:18px;
-  color:#f6d34b;
 }
-.header-actions{
-  display:flex;
-  gap:10px;
-}
-.btn{
-  padding:6px 14px;
-  border-radius:20px;
-  font-size:13px;
-  cursor:pointer;
-}
-.btn.register{
+.tabs .active{
   background:linear-gradient(90deg,#f6d34b,#f2b705);
   color:#000;
 }
-.btn.login{
-  border:1px solid #2c6e4f;
+.tabs .inactive{
+  background:#083025;
+  cursor:pointer;
 }
 
-/* ===== FORM ===== */
 h2{
   text-align:center;
   margin:10px 0 30px;
 }
+
 input{
   width:100%;
   padding:16px;
@@ -62,6 +51,7 @@ input{
   color:#fff;
   font-size:14px;
 }
+
 .phone{
   display:flex;
   gap:10px;
@@ -73,13 +63,15 @@ input{
   padding:16px;
   color:#fff;
 }
+
 .checkbox{
   display:flex;
   align-items:center;
   gap:10px;
   margin:15px 0;
 }
-button.submit{
+
+button{
   width:100%;
   padding:16px;
   border:none;
@@ -89,126 +81,80 @@ button.submit{
   font-size:16px;
   cursor:pointer;
 }
-#msg{
-  margin-top:10px;
-  font-size:14px;
+button:disabled{
+  opacity:0.6;
+  cursor:not-allowed;
 }
 
-/* ===== BOTTOM NAV ===== */
-.bottom{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#083025;
-  padding:10px 0;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-}
-.nav-item{
+#msg{
+  margin-top:15px;
   text-align:center;
-  font-size:12px;
-  color:#cfcfcf;
-}
-.nav-item.active{
-  color:#f6d34b;
-}
-.center-btn{
-  background:#f6d34b;
-  width:54px;
-  height:54px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#000;
-  font-weight:bold;
-  margin-top:-30px;
-  cursor:pointer;
+  font-size:14px;
 }
 </style>
 </head>
 
 <body>
-
-<!-- ===== HEADER ===== -->
-<div class="header">
-  <div class="logo">BETWIN</div>
-  <div class="header-actions">
-    <div class="btn register">Register</div>
-    <div class="btn login" id="topLoginBtn">Login</div>
-  </div>
-</div>
-
-<!-- ===== PAGE TITLE ===== -->
-<h2>Welcome to<br><strong>BETWIN</strong></h2>
-
-<!-- ===== FORM ===== -->
 <div class="container">
+
+  <div class="tabs">
+    <div class="active">Register</div>
+    <div class="inactive" onclick="location.href='login.html'">Login</div>
+  </div>
+
+  <h2>Welcome to<br><strong>BETWIN</strong></h2>
+
   <input id="username" placeholder="Username">
+
   <div class="phone">
-    <select id="countryCode">
+    <select>
       <option>+234</option>
     </select>
     <input id="phone" placeholder="Mobile">
   </div>
-  <input type="password" id="password" placeholder="Password">
-  <input type="password" id="confirmPassword" placeholder="Confirm Password">
+
+  <input id="password" type="password" placeholder="Password">
+  <input id="confirmPassword" type="password" placeholder="Confirm password">
+
   <div class="checkbox">
     <input type="checkbox" id="ageCheck">
     <span>Already over 18 years old</span>
   </div>
-  <button class="submit" id="registerBtn">Register</button>
-  <div id="msg"></div>
-</div>
 
-<!-- ===== BOTTOM NAV ===== -->
-<div class="bottom">
-  <div class="nav-item">Menu</div>
-  <div class="nav-item">Home</div>
-  <div class="center-btn">👤</div>
-  <div class="nav-item">Promo</div>
-  <div class="nav-item">Member</div>
+  <button id="registerBtn">Register</button>
+
+  <div id="msg"></div>
+
 </div>
 
 <script>
 const SHEETY_URL = "https://api.sheety.co/9b805411b5ecdb493c774c33fb4e5b61/code3/code3";
-const blockedPasswords = ["123456","moyin123","moyin1234","moyin12","difficult","difficulty","difficultydifficult"];
 
-const pwInput = document.getElementById("password");
-const pwWarning = document.getElementById("pwWarning");
 const registerBtn = document.getElementById("registerBtn");
 const msg = document.getElementById("msg");
-const topLoginBtn = document.getElementById("topLoginBtn");
 
-topLoginBtn.addEventListener("click", ()=> location.href="login.html");
-
-// REGISTER LOGIC
 registerBtn.addEventListener("click", async () => {
   const username = document.getElementById("username").value.trim();
   const phone = document.getElementById("phone").value.trim();
-  const country = document.getElementById("countryCode").value.trim();
   const password = document.getElementById("password").value.trim();
   const confirmPassword = document.getElementById("confirmPassword").value.trim();
   const ageChecked = document.getElementById("ageCheck").checked;
 
   msg.textContent = "";
+  msg.style.color = "#fff";
+
   if (!username || !phone || !password || !confirmPassword) {
     msg.style.color = "red";
     msg.textContent = "Please fill all fields";
     return;
   }
+
   if (!ageChecked) {
     msg.style.color = "red";
     msg.textContent = "You must confirm you are over 18";
     return;
   }
-  if (blockedPasswords.includes(password.toLowerCase())) {
-    msg.style.color = "red";
-    msg.textContent = "Can't use that password";
-    return;
-  }
+
   if (password !== confirmPassword) {
     msg.style.color = "red";
     msg.textContent = "Passwords do not match";
@@ -216,51 +162,46 @@ registerBtn.addEventListener("click", async () => {
   }
 
   registerBtn.disabled = true;
-  msg.style.color = "#4caf50";
+  msg.style.color = "#f6d34b";
   msg.textContent = "Registering...";
 
   try {
-    // Check if phone exists
-    const checkRes = await fetch(`${SHEETY_URL}?filter[phone]=${encodeURIComponent(phone)}`);
-    const checkData = await checkRes.json();
-    if (checkData.code3 && checkData.code3.length > 0) {
-      msg.style.color = "red";
-      msg.textContent = "Account already exists";
-      registerBtn.disabled = false;
-      return;
-    }
-
-    // Create account
-    const createRes = await fetch(SHEETY_URL, {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
+    const res = await fetch(SHEETY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        code3:{
+        code3: {
           username: username,
-          phone: country+phone,
+          phone: phone,
           password: password,
           balance: 200
         }
       })
     });
-    if(!createRes.ok){
-      msg.style.color="red";
-      msg.textContent="Registration failed";
-      registerBtn.disabled=false;
+
+    const data = await res.json();
+    console.log("Sheety response:", data);
+
+    if (!data.code3) {
+      msg.style.color = "red";
+      msg.textContent = "Registration failed. Try again.";
+      registerBtn.disabled = false;
       return;
     }
 
-    msg.style.color="#4caf50";
-    msg.textContent="Registered successfully! Redirecting to login...";
-    setTimeout(()=> location.href="login.html", 1000);
+    msg.style.color = "#00ff9c";
+    msg.textContent = "Registration successful! Redirecting...";
+    setTimeout(() => {
+      location.href = "login.html";
+    }, 1000);
 
-  } catch(err){
-    msg.style.color="red";
-    msg.textContent="Network error: "+err.message;
-    registerBtn.disabled=false;
+  } catch (err) {
+    msg.style.color = "red";
+    msg.textContent = "Network error. Try again.";
+    registerBtn.disabled = false;
   }
 });
 </script>
 
 </body>
-  </html>
+</html>
