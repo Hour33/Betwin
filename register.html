@@ -90,41 +90,78 @@ button:disabled{opacity:.6;}
   <div id="msg"></div>  </div>  <script>
 const SHEETY_URL = "https://api.sheety.co/27e2b7c20c5e6bc24ecedde0dfffa8a5/betwin1/betwin1";
 
-document.getElementById("registerBtn").onclick = async () => {
-  const username = document.getElementById("username").value;
-  const phone = document.getElementById("phone").value;
-  const password = document.getElementById("password").value;
+const btn = document.getElementById("registerBtn");
+const msg = document.getElementById("msg");
 
-  const msg = document.getElementById("msg");
-  msg.textContent = "Saving...";
+btn.onclick = async () => {
+  const username = document.getElementById("username").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirm = document.getElementById("confirmPassword").value.trim();
+
+  msg.textContent = "";
+
+  // Basic validation
+  if (!username || !phone || !password || !confirm) {
+    msg.textContent = "Fill all fields";
+    return;
+  }
+
+  if (password !== confirm) {
+    msg.textContent = "Passwords do not match";
+    return;
+  }
+
+  btn.disabled = true;
+  msg.textContent = "Checking...";
 
   try {
-    const res = await fetch(SHEETY_URL, {
+    // 1️⃣ FETCH EXISTING USERS FOR DUPLICATE CHECK
+    const checkRes = await fetch(SHEETY_URL);
+    const checkData = await checkRes.json();
+    const users = checkData.betwin1 || [];
+
+    const duplicate = users.find(
+      u => u.username === username || u.phone === phone
+    );
+
+    if (duplicate) {
+      msg.textContent = "Username or phone already exists";
+      btn.disabled = false;
+      return;
+    }
+
+    // 2️⃣ SAVE NEW USER
+    msg.textContent = "Saving...";
+
+    const saveRes = await fetch(SHEETY_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         betwin1: {
-          username: username,
-          phone: phone,
-          password: password
+          username,
+          phone,
+          password
         }
       })
     });
 
-    const data = await res.json();
-    console.log(data);
-
-    if (!res.ok) {
-      msg.textContent = "Failed to save";
+    if (!saveRes.ok) {
+      msg.textContent = "Registration failed";
+      btn.disabled = false;
       return;
     }
 
-    msg.textContent = "Saved successfully!";
-  } catch (e) {
-    console.error(e);
-    msg.textContent = "Error connecting to sheet";
+    // 3️⃣ SUCCESS + REDIRECT
+    msg.textContent = "Registered successfully!";
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+
+  } catch (err) {
+    console.error(err);
+    msg.textContent = "Network error";
+    btn.disabled = false;
   }
 };
 </script>  </body>  
