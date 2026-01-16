@@ -99,9 +99,6 @@ btn.onclick = async () => {
   const password = document.getElementById("password").value.trim();
   const confirm = document.getElementById("confirmPassword").value.trim();
 
-  msg.textContent = "";
-
-  // Basic validation
   if (!username || !phone || !password || !confirm) {
     msg.textContent = "Fill all fields";
     return;
@@ -116,12 +113,18 @@ btn.onclick = async () => {
   msg.textContent = "Checking...";
 
   try {
-    // 1️⃣ FETCH EXISTING USERS FOR DUPLICATE CHECK
+    /* 1️⃣ GET USERS */
     const checkRes = await fetch(SHEETY_URL);
+    if (!checkRes.ok) {
+      msg.textContent = "Could not check users";
+      btn.disabled = false;
+      return;
+    }
+
     const checkData = await checkRes.json();
     const users = checkData.betwin1 || [];
 
-    const duplicate = users.find(
+    const duplicate = users.some(
       u => u.username === username || u.phone === phone
     );
 
@@ -131,20 +134,19 @@ btn.onclick = async () => {
       return;
     }
 
-    // 2️⃣ SAVE NEW USER
+    /* 2️⃣ SAVE USER */
     msg.textContent = "Saving...";
 
     const saveRes = await fetch(SHEETY_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        betwin1: {
-          username,
-          phone,
-          password
-        }
+        betwin1: { username, phone, password }
       })
     });
+
+    const saveData = await saveRes.json();
+    console.log("SAVE RESPONSE:", saveData);
 
     if (!saveRes.ok) {
       msg.textContent = "Registration failed";
@@ -152,7 +154,7 @@ btn.onclick = async () => {
       return;
     }
 
-    // 3️⃣ SUCCESS + REDIRECT
+    /* 3️⃣ SUCCESS */
     msg.textContent = "Registered successfully!";
     setTimeout(() => {
       window.location.href = "login.html";
