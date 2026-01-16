@@ -1,118 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register | Betwin</title>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Register | Betwin</title>  <style>  
+body{  
+  margin:0;  
+  font-family:Arial, sans-serif;  
+  background:#0b3d2e;  
+  color:#fff;  
+}  
+.container{padding:20px;}  
+.tabs{  
+  display:flex;  
+  border-radius:30px;  
+  overflow:hidden;  
+  margin-bottom:25px;  
+}  
+.tabs div{  
+  flex:1;  
+  padding:14px;  
+  text-align:center;  
+  font-weight:bold;  
+}  
+.tabs .active{  
+  background:linear-gradient(90deg,#f6d34b,#f2b705);  
+  color:#000;  
+}  
+.tabs .inactive{  
+  background:#083025;  
+  cursor:pointer;  
+}  
+h2{text-align:center;margin:10px 0 30px;}  
+  
+input{  
+  width:100%;  
+  padding:16px;  
+  border:none;  
+  border-radius:30px;  
+  margin-bottom:15px;  
+  background:#1f4f3a;  
+  color:#fff;  
+  font-size:14px;  
+}  
+.phone{display:flex;gap:10px;}  
+.phone select{  
+  background:#1f4f3a;  
+  border:none;  
+  border-radius:30px;  
+  padding:16px;  
+  color:#fff;  
+}  
+.checkbox{  
+  display:flex;  
+  align-items:center;  
+  gap:10px;  
+  margin:15px 0;  
+}  
+button{  
+  width:100%;  
+  padding:16px;  
+  border:none;  
+  border-radius:30px;  
+  background:#2c6e4f;  
+  color:#fff;  
+  font-size:16px;  
+  cursor:pointer;  
+}  
+button:disabled{opacity:.6;}  
+#msg{  
+  text-align:center;  
+  margin-top:15px;  
+  font-size:14px;  
+}  
+</style>  </head>  <body>  
+<div class="container">    <div class="tabs">  
+    <div class="active">Register</div>  
+    <div class="inactive" onclick="location.href='login.html'">Login</div>  
+  </div>    <h2>Welcome to<br><strong>BETWIN</strong></h2>    <input id="username" placeholder="Username">    <div class="phone">  
+    <select>  
+      <option>+234</option>  
+    </select>  
+    <input id="phone" placeholder="Mobile">  
+  </div>    <input id="password" type="password" placeholder="Password">  
+  <input id="confirmPassword" type="password" placeholder="Confirm password">    <div class="checkbox">  
+    <input type="checkbox" id="ageCheck">  
+    <span>Already over 18 years old</span>  
+  </div>  <button id="registerBtn">Register</button>
 
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0b3d2e;
-  color:#fff;
-}
-.container{padding:20px;}
-.tabs{
-  display:flex;
-  border-radius:30px;
-  overflow:hidden;
-  margin-bottom:25px;
-}
-.tabs div{
-  flex:1;
-  padding:14px;
-  text-align:center;
-  font-weight:bold;
-}
-.tabs .active{
-  background:linear-gradient(90deg,#f6d34b,#f2b705);
-  color:#000;
-}
-.tabs .inactive{
-  background:#083025;
-  cursor:pointer;
-}
-h2{text-align:center;margin:10px 0 30px;}
-
-input{
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:30px;
-  margin-bottom:15px;
-  background:#1f4f3a;
-  color:#fff;
-  font-size:14px;
-}
-.phone{display:flex;gap:10px;}
-.phone select{
-  background:#1f4f3a;
-  border:none;
-  border-radius:30px;
-  padding:16px;
-  color:#fff;
-}
-.checkbox{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin:15px 0;
-}
-button{
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:30px;
-  background:#2c6e4f;
-  color:#fff;
-  font-size:16px;
-  cursor:pointer;
-}
-button:disabled{opacity:.6;}
-#msg{
-  text-align:center;
-  margin-top:15px;
-  font-size:14px;
-}
-</style>
-</head>
-
-<body>
-<div class="container">
-
-  <div class="tabs">
-    <div class="active">Register</div>
-    <div class="inactive" onclick="location.href='login.html'">Login</div>
-  </div>
-
-  <h2>Welcome to<br><strong>BETWIN</strong></h2>
-
-  <input id="username" placeholder="Username">
-
-  <div class="phone">
-    <select>
-      <option>+234</option>
-    </select>
-    <input id="phone" placeholder="Mobile">
-  </div>
-
-  <input id="password" type="password" placeholder="Password">
-  <input id="confirmPassword" type="password" placeholder="Confirm password">
-
-  <div class="checkbox">
-    <input type="checkbox" id="ageCheck">
-    <span>Already over 18 years old</span>
-  </div>
-
-  <button id="registerBtn">Register</button>
-  <div id="msg"></div>
-
-</div>
-
-<script>
-const SHEETY_URL = "https://api.sheety.co/9b805411b5ecdb493c774c33fb4e5b61/code3/code3";
-const SHEETY_TOKEN = "YOUR_BEARER_TOKEN_HERE"; // already created by you
+  <div id="msg"></div>  </div>  <script>
+const SHEETY_URL = "https://api.sheety.co/27e2b7c20c5e6bc24ecedde0dfffa8a5/betwin1/betwin1";
+const SHEETY_TOKEN = "PASTE_YOUR_REAL_BEARER_TOKEN_HERE";
 
 const registerBtn = document.getElementById("registerBtn");
 const msg = document.getElementById("msg");
@@ -156,11 +133,10 @@ registerBtn.onclick = async () => {
         "Authorization": "Bearer " + SHEETY_TOKEN
       },
       body: JSON.stringify({
-        code3s: {
+        betwin1: {
           username: username,
           phone: phone,
-          password: password,
-          balance: 200
+          password: password
         }
       })
     });
@@ -168,26 +144,25 @@ registerBtn.onclick = async () => {
     const data = await res.json();
     console.log(data);
 
-    if (!data.code3) {
+    if (!res.ok || !data.betwin1) {
       msg.style.color = "red";
-      msg.textContent = "Registration failed";
+      msg.textContent = "Registration failed (Sheety error)";
       registerBtn.disabled = false;
       return;
     }
 
     msg.style.color = "#00ff9c";
-    msg.textContent = "Registered successfully! Redirecting...";
+    msg.textContent = "Registered successfully!";
     setTimeout(() => {
       location.href = "login.html";
     }, 1000);
 
   } catch (err) {
+    console.error(err);
     msg.style.color = "red";
     msg.textContent = "Network error";
     registerBtn.disabled = false;
   }
 };
-</script>
-
-</body>
+</script>  </body>  
 </html>
