@@ -12,9 +12,7 @@ body{
   background:#0b3d2e;
   color:#fff;
 }
-.container{
-  padding:20px;
-}
+.container{padding:20px;}
 .tabs{
   display:flex;
   border-radius:30px;
@@ -35,11 +33,7 @@ body{
   background:#083025;
   cursor:pointer;
 }
-
-h2{
-  text-align:center;
-  margin:10px 0 30px;
-}
+h2{text-align:center;margin:10px 0 30px;}
 
 input{
   width:100%;
@@ -51,11 +45,7 @@ input{
   color:#fff;
   font-size:14px;
 }
-
-.phone{
-  display:flex;
-  gap:10px;
-}
+.phone{display:flex;gap:10px;}
 .phone select{
   background:#1f4f3a;
   border:none;
@@ -63,14 +53,12 @@ input{
   padding:16px;
   color:#fff;
 }
-
 .checkbox{
   display:flex;
   align-items:center;
   gap:10px;
   margin:15px 0;
 }
-
 button{
   width:100%;
   padding:16px;
@@ -81,14 +69,10 @@ button{
   font-size:16px;
   cursor:pointer;
 }
-button:disabled{
-  opacity:0.6;
-  cursor:not-allowed;
-}
-
+button:disabled{opacity:.6;}
 #msg{
-  margin-top:15px;
   text-align:center;
+  margin-top:15px;
   font-size:14px;
 }
 </style>
@@ -122,26 +106,25 @@ button:disabled{
   </div>
 
   <button id="registerBtn">Register</button>
-
   <div id="msg"></div>
 
 </div>
 
 <script>
 const SHEETY_URL = "https://api.sheety.co/9b805411b5ecdb493c774c33fb4e5b61/code3/code3";
+const SHEETY_TOKEN = "YOUR_BEARER_TOKEN_HERE"; // already created by you
 
 const registerBtn = document.getElementById("registerBtn");
 const msg = document.getElementById("msg");
 
-registerBtn.addEventListener("click", async () => {
+registerBtn.onclick = async () => {
   const username = document.getElementById("username").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const password = document.getElementById("password").value.trim();
   const confirmPassword = document.getElementById("confirmPassword").value.trim();
-  const ageChecked = document.getElementById("ageCheck").checked;
+  const ageCheck = document.getElementById("ageCheck").checked;
 
   msg.textContent = "";
-  msg.style.color = "#fff";
 
   if (!username || !phone || !password || !confirmPassword) {
     msg.style.color = "red";
@@ -149,9 +132,9 @@ registerBtn.addEventListener("click", async () => {
     return;
   }
 
-  if (!ageChecked) {
+  if (!ageCheck) {
     msg.style.color = "red";
-    msg.textContent = "You must confirm you are over 18";
+    msg.textContent = "You must be over 18";
     return;
   }
 
@@ -168,7 +151,10 @@ registerBtn.addEventListener("click", async () => {
   try {
     const res = await fetch(SHEETY_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + SHEETY_TOKEN
+      },
       body: JSON.stringify({
         code3: {
           username: username,
@@ -180,27 +166,27 @@ registerBtn.addEventListener("click", async () => {
     });
 
     const data = await res.json();
-    console.log("Sheety response:", data);
+    console.log(data);
 
     if (!data.code3) {
       msg.style.color = "red";
-      msg.textContent = "Registration failed. Try again.";
+      msg.textContent = "Registration failed";
       registerBtn.disabled = false;
       return;
     }
 
     msg.style.color = "#00ff9c";
-    msg.textContent = "Registration successful! Redirecting...";
+    msg.textContent = "Registered successfully! Redirecting...";
     setTimeout(() => {
       location.href = "login.html";
     }, 1000);
 
   } catch (err) {
     msg.style.color = "red";
-    msg.textContent = "Network error. Try again.";
+    msg.textContent = "Network error";
     registerBtn.disabled = false;
   }
-});
+};
 </script>
 
 </body>
