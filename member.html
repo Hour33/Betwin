@@ -1,171 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register | Betwin</title>
-
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0b3d2e;
-  color:#fff;
-}
-.container{
-  padding:20px;
-}
-.tabs{
-  display:flex;
-  border-radius:30px;
-  overflow:hidden;
-  margin-bottom:25px;
-}
-.tabs div{
-  flex:1;
-  padding:14px;
-  text-align:center;
-  font-weight:bold;
-  cursor:pointer;
-}
-.tabs .active{
-  background:linear-gradient(90deg,#f6d34b,#f2b705);
-  color:#000;
-}
-.tabs .inactive{
-  background:#083025;
-}
-
-h2{
-  text-align:center;
-  margin:10px 0 30px;
-}
-
-input{
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:30px;
-  margin-bottom:15px;
-  background:#1f4f3a;
-  color:#fff;
-  font-size:14px;
-}
-
-.phone{
-  display:flex;
-  gap:10px;
-}
-.phone select{
-  background:#1f4f3a;
-  border:none;
-  border-radius:30px;
-  padding:16px;
-  color:#fff;
-}
-
-.checkbox{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin:15px 0;
-}
-
-button{
-  width:100%;
-  padding:16px;
-  border:none;
-  border-radius:30px;
-  background:#2c6e4f;
-  color:#aaa;
-  font-size:16px;
-  cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-<div class="container">
-
-  <div class="tabs">
-    <div class="active">Register</div>
-    <div class="inactive" onclick="window.location='login.html'">Login</div>
-  </div>
-
-  <h2>Welcome to<br><strong>BETWIN</strong></h2>
-
-  <input id="username" placeholder="Username">
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Register | Betwin</title>  <style>  
+body{  
+  margin:0;  
+  font-family:Arial, sans-serif;  
+  background:#0b3d2e;  
+  color:#fff;  
+}  
+.container{padding:20px;}  
+.tabs{  
+  display:flex;  
+  border-radius:30px;  
+  overflow:hidden;  
+  margin-bottom:25px;  
+}  
+.tabs div{  
+  flex:1;  
+  padding:14px;  
+  text-align:center;  
+  font-weight:bold;  
+}  
+.tabs .active{  
+  background:linear-gradient(90deg,#f6d34b,#f2b705);  
+  color:#000;  
+}  
+.tabs .inactive{  
+  background:#083025;  
+  cursor:pointer;  
+}  
+h2{text-align:center;margin:10px 0 30px;}  
   
-  <div class="phone">
-    <select id="countryCode">
-      <option>+234</option>
-    </select>
-    <input id="mobile" placeholder="Mobile">
-  </div>
+input{  
+  width:100%;  
+  padding:16px;  
+  border:none;  
+  border-radius:30px;  
+  margin-bottom:15px;  
+  background:#1f4f3a;  
+  color:#fff;  
+  font-size:14px;  
+}  
+.phone{display:flex;gap:10px;}  
+.phone select{  
+  background:#1f4f3a;  
+  border:none;  
+  border-radius:30px;  
+  padding:16px;  
+  color:#fff;  
+}  
+.checkbox{  
+  display:flex;  
+  align-items:center;  
+  gap:10px;  
+  margin:15px 0;  
+}  
+button{  
+  width:100%;  
+  padding:16px;  
+  border:none;  
+  border-radius:30px;  
+  background:#2c6e4f;  
+  color:#fff;  
+  font-size:16px;  
+  cursor:pointer;  
+}  
+button:disabled{opacity:.6;}  
+#msg{  
+  text-align:center;  
+  margin-top:15px;  
+  font-size:14px;  
+}  
+</style>  </head>  <body>  
+<div class="container">    <div class="tabs">  
+    <div class="active">Register</div>  
+    <div class="inactive" onclick="location.href='login.html'">Login</div>  
+  </div>    <h2>Welcome to<br><strong>BETWIN</strong></h2>    <input id="username" placeholder="Username">    <div class="phone">  
+    <select>  
+      <option>+234</option>  
+    </select>  
+    <input id="phone" placeholder="Mobile">  
+  </div>    <input id="password" type="password" placeholder="Password">  
+  <input id="confirmPassword" type="password" placeholder="Confirm password">    <div class="checkbox">  
+    <input type="checkbox" id="ageCheck">  
+    <span>Already over 18 years old</span>  
+  </div>  <button id="registerBtn">Register</button>
 
-  <input id="password" type="password" placeholder="Password">
-  <input id="confirmPassword" type="password" placeholder="Confirm password">
+  <div id="msg"></div>  </div>  <script>
+const SHEETY_URL = "https://api.sheety.co/27e2b7c20c5e6bc24ecedde0dfffa8a5/betwin1/betwin1";
 
-  <div class="checkbox">
-    <input id="ageCheck" type="checkbox">
-    <span>Already over 18 years old</span>
-  </div>
+const btn = document.getElementById("registerBtn");
+const msg = document.getElementById("msg");
 
-  <button onclick="registerUser()">Register</button>
+btn.onclick = async () => {
+  const username = document.getElementById("username").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const confirm = document.getElementById("confirmPassword").value.trim();
 
-</div>
-
-<script>
-async function registerUser() {
-  const username = document.getElementById('username').value.trim();
-  const country = document.getElementById('countryCode').value;
-  const mobile = document.getElementById('mobile').value.trim();
-  const password = document.getElementById('password').value;
-  const confirmPassword = document.getElementById('confirmPassword').value;
-  const ageCheck = document.getElementById('ageCheck').checked;
-
-  if (!username || !mobile || !password || !confirmPassword) {
-    alert('Please fill all fields');
+  if (!username || !phone || !password || !confirm) {
+    msg.textContent = "Fill all fields";
     return;
   }
-  if (password !== confirmPassword) {
-    alert('Passwords do not match');
-    return;
-  }
-  if (!ageCheck) {
-    alert('You must confirm you are over 18 years old');
+
+  if (password !== confirm) {
+    msg.textContent = "Passwords do not match";
     return;
   }
 
-  const data = {
-    code3: {
-      username: username,
-      mobile: country + mobile,
-      password: password
-    }
-  };
+  btn.disabled = true;
+  msg.textContent = "Checking...";
 
   try {
-    const response = await fetch('https://api.sheety.co/9b805411b5ecdb493c774c33fb4e5b61/code3/code3', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+    /* 1️⃣ GET USERS */
+    const checkRes = await fetch(SHEETY_URL);
+    if (!checkRes.ok) {
+      msg.textContent = "Could not check users";
+      btn.disabled = false;
+      return;
+    }
+
+    const checkData = await checkRes.json();
+    const users = checkData.betwin1 || [];
+
+    const duplicate = users.some(
+      u => u.username === username || u.phone === phone
+    );
+
+    if (duplicate) {
+      msg.textContent = "Username or phone already exists";
+      btn.disabled = false;
+      return;
+    }
+
+    /* 2️⃣ SAVE USER */
+    msg.textContent = "Saving...";
+
+    const saveRes = await fetch(SHEETY_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        betwin1: { username, phone, password }
+      })
     });
 
-    if (response.ok) {
-      alert('Registration successful!');
-      window.location = 'login.html';
-    } else {
-      alert('Registration failed. Try again.');
-    }
-  } catch (error) {
-    console.error(error);
-    alert('An error occurred. Please try again.');
-  }
-}
-</script>
+    const saveData = await saveRes.json();
+    console.log("SAVE RESPONSE:", saveData);
 
-</body>
-    </html>
+    if (!saveRes.ok) {
+      msg.textContent = "Registration failed";
+      btn.disabled = false;
+      return;
+    }
+
+    /* 3️⃣ SUCCESS */
+    msg.textContent = "Registered successfully!";
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+
+  } catch (err) {
+    console.error(err);
+    msg.textContent = "Network error";
+    btn.disabled = false;
+  }
+};
+</script>  </body>  
+</html>
